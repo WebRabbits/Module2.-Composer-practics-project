@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Connection\\' => array($baseDir . '/connection'),
+    'Config\\' => array($baseDir . '/config'),
     'Aura\\SqlQuery\\' => array($vendorDir . '/aura/sqlquery/src'),
     'App\\' => array($baseDir . '/app'),
 );

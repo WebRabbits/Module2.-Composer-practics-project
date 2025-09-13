@@ -10,6 +10,7 @@ class ComposerStaticInit8d070178755c320c69f93ee4800660ef
         'C' => 
         array (
             'Connection\\' => 11,
+            'Config\\' => 7,
         ),
         'A' => 
         array (
@@ -22,6 +23,10 @@ class ComposerStaticInit8d070178755c320c69f93ee4800660ef
         'Connection\\' => 
         array (
             0 => __DIR__ . '/../..' . '/connection',
+        ),
+        'Config\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/config',
         ),
         'Aura\\SqlQuery\\' => 
         array (

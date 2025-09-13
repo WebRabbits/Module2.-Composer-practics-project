@@ -3,6 +3,8 @@
 use App\QueryBuilder;
 use Connection\Connection; // Подключение к БД
 
+require(__DIR__ . "/../../config/GlobalsConfig.php");
+
 $db = new QueryBuilder(Connection::Connect());
 
 //// Получение всех записей из БД
@@ -11,7 +13,10 @@ var_dump($posts);
 
 //// Получение данных из БД по условию
 $post = $db->get("posts", "LIKE", ["title" => '%пост%']);
-var_dump($post);
+// var_dump($post);
+
+// var_dump($GLOBALS["config"]);
+// var_dump($GLOBALS["config"]["mysql_connection"]["host"]);
 
 // var_dump($db->findOne());
 
@@ -27,7 +32,7 @@ var_dump($post);
 
 //// Обновить данные по 
 // $db->update("posts", [
-//     "title" => "Изменил пост с id=31"
+//     "title" => "Изменил пост с id=31 и добавил к нему текст"
 // ],31);
 
 //// Удаление записи из БД по переданному ID
