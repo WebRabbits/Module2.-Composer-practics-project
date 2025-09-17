@@ -3,7 +3,8 @@
     "aura/sqlquery": "3.0.0",
     "league/plates": "^3.6",
     "tamtamchik/simple-flash": "^3.0",
-    "nikic/fast-route": "^1.3"
+    "nikic/fast-route": "^1.3",
+    "illuminate/support": "^12.29"
   },
   "autoload": {
     "psr-4": {

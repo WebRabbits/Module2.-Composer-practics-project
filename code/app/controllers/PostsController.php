@@ -1,22 +1,29 @@
-<?php 
+<?php
 
 namespace App\controllers;
 
 use App\QueryBuilder;
 use Connection\Connection;
+use League\Plates\Engine;
+
 require(__DIR__ . "/../../config/GlobalsConfig.php");
 
 
-class PostsController{
-    public function getAllPosts() {
-        $db = new QueryBuilder(Connection::Connect());
-        
-        $result = $db->getAll("posts");
-        // var_dump($result);
-        foreach($result->result() as $post) {
-             var_dump($post->title);
-        }
+class PostsController
+{
+    private $db = null;
+    private $templates = null;
+
+    public function __construct()
+    {
+        $this->db = new QueryBuilder(Connection::Connect());
+        $this->templates = new Engine("../app/views");
+    }
+    public function getAllPosts()
+    {
+        $posts = $this->db->getAll("posts")->result();
+        // var_dump($posts);
+
+        echo $this->templates->render("posts", ["postsInView" => $posts]);
     }
 }
-
-?>
