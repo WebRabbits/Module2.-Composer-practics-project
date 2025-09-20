@@ -47,6 +47,7 @@ class ComposerStaticInit8d070178755c320c69f93ee4800660ef
             'Psr\\SimpleCache\\' => 16,
             'Psr\\Container\\' => 14,
             'Psr\\Clock\\' => 10,
+            'ParagonIE\\ConstantTime\\' => 23,
         ),
         'L' => 
         array (
@@ -68,6 +69,12 @@ class ComposerStaticInit8d070178755c320c69f93ee4800660ef
         'D' => 
         array (
             'Doctrine\\Inflector\\' => 19,
+            'Delight\\Otp\\' => 12,
+            'Delight\\Http\\' => 13,
+            'Delight\\Db\\' => 11,
+            'Delight\\Cookie\\' => 15,
+            'Delight\\Base64\\' => 15,
+            'Delight\\Auth\\' => 13,
         ),
         'C' => 
         array (
@@ -132,6 +139,10 @@ class ComposerStaticInit8d070178755c320c69f93ee4800660ef
         array (
             0 => __DIR__ . '/..' . '/psr/clock/src',
         ),
+        'ParagonIE\\ConstantTime\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/paragonie/constant_time_encoding/src',
+        ),
         'League\\Plates\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/plates/src',
@@ -158,6 +169,30 @@ class ComposerStaticInit8d070178755c320c69f93ee4800660ef
         'Doctrine\\Inflector\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/inflector/src',
+        ),
+        'Delight\\Otp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/delight-im/otp/src',
+        ),
+        'Delight\\Http\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/delight-im/http/src',
+        ),
+        'Delight\\Db\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/delight-im/db/src',
+        ),
+        'Delight\\Cookie\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/delight-im/cookie/src',
+        ),
+        'Delight\\Base64\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/delight-im/base64/src',
+        ),
+        'Delight\\Auth\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/delight-im/auth/src',
         ),
         'Connection\\' => 
         array (

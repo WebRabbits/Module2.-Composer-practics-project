@@ -22,7 +22,6 @@ class PostsController
     public function getAllPosts()
     {
         $posts = $this->db->getAll("posts")->result();
-        // var_dump($posts);
 
         echo $this->templates->render("posts", ["postsInView" => $posts]);
     }

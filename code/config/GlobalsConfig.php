@@ -11,5 +11,9 @@ $GLOBALS["config"] = [
         "test" => [
             "test1" => "result_test123"
         ]
+    ],
+    "verificationData" => [
+        "selector" => "sfo_DMGqyKDoCj_x",
+        "token" => "1CpuoTTcIsWuYI2n"
     ]
 ];

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Доделать вывод информации в шаблоне в зависимости от авторизованности пользователя - выводить соответствующие пункты меню в зависимости от авторизации юзера
+ * Сделать LogOut √
+ * Просмотреть видео User 3
+ */
 
 if (!session_id()) {
     session_start();
@@ -13,22 +18,20 @@ $templates = new League\Plates\Engine("../app/views");
 use Illuminate\Support\Arr;
 
 use function Tamtamchik\SimpleFlash\flash;
-// var_dump($templates);
-
-// echo $templates->render("homepage", ["name" => "John"]);
-// echo $templates->render("contacts");
-// echo $templates->render("about");
 
 
 
 $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/home', ["App\controllers\HomeController", "index"]); // Название контроллера, названеи метода
-    $r->addRoute('GET', '/about/{amount:\d+}', ["App\controllers\HomeController", "about"]); // Название контроллера, названеи метода
-    // $r->addRoute('GET', '/user/{id:\d+}', ["App\controllers\HomeController", "about"]);
-    // $r->addRoute('GET', '/user/{id:\d+}/store/classes/{number:\d+}', ["App\controllers\HomeController", "about"]);
-    // $r->addRoute('GET', '/articles/{id:\d+}[/{title}]', 'get_article_handler');
+    $r->addRoute('GET', '/about/{amount:\d+}', ["App\controllers\HomeController", "about"]);
     $r->addRoute("GET", "/posts", ["App\controllers\PostsController", "getAllPosts"]);
-    // $r->addRoute("GET", "/", "");
+    $r->addRoute("GET", "/registration", ["App\controllers\AuthController", "showPageRegistration"]);
+    $r->addRoute("POST", "/registration", ["App\controllers\AuthController", "registration"]);
+    $r->addRoute("GET", "/verification", ["App\controllers\AuthController", "emailVerification"]);
+    $r->addRoute("GET", "/auth", ["App\controllers\AuthController", "showPageLogin"]);
+    $r->addRoute("POST", "/auth", ["App\controllers\AuthController", "login"]);
+    $r->addRoute("GET", "/logout", ["App\controllers\AuthController", "logout"]);
+    $r->addRoute("POST", "/home", ["App\controllers\HomeController", "changePassword"]);
 });
 
 // Fetch method and URI from somewhere
@@ -55,18 +58,35 @@ switch ($routeInfo[0]) {
     case FastRoute\Dispatcher::FOUND:
         $handler = $routeInfo[1];
         $vars = $routeInfo[2];
-        // d($handler);
-        // die;
-        // d($vars);
 
         $controller = new $handler[0];
-        // d($controller);
-        // var_dump($controller);
 
         call_user_func([$controller, $handler[1]], $vars);
 
         break;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
