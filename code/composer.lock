@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ae024f7fd346dd80f04fdf8513516a8a",
+    "content-hash": "d4d649b83cfa22df04ba1656b0ce0306",
     "packages": [
         {
             "name": "aura/sqlquery",
@@ -505,8 +505,116 @@
             "time": "2025-08-10T19:31:58+00:00"
         },
         {
+            "name": "eoghanobrien/php-simple-mail",
+            "version": "1.7.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/eoghanobrien/php-simple-mail.git",
+                "reference": "9b8d4c01c7c0cac769ba42ccd08a73ecee855825"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/eoghanobrien/php-simple-mail/zipball/9b8d4c01c7c0cac769ba42ccd08a73ecee855825",
+                "reference": "9b8d4c01c7c0cac769ba42ccd08a73ecee855825",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.8",
+                "squizlabs/php_codesniffer": "~2.8"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "class.simple_mail.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eoghan O'Brien",
+                    "email": "eoghan@eoghanobrien.com",
+                    "homepage": "http://www.eoghanobrien.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Provides a simple, chainable wrapper for creating and sending emails using the PHP mail() function.",
+            "homepage": "https://github.com/eoghanobrien/php-simple-mail",
+            "keywords": [
+                "email",
+                "php5"
+            ],
+            "support": {
+                "issues": "https://github.com/eoghanobrien/php-simple-mail/issues",
+                "source": "https://github.com/eoghanobrien/php-simple-mail/tree/master"
+            },
+            "time": "2018-03-16T19:29:23+00:00"
+        },
+        {
+            "name": "fzaninotto/faker",
+            "version": "v1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fzaninotto/Faker.git",
+                "reference": "d0190b156bcca848d401fb80f31f504f37141c8d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/d0190b156bcca848d401fb80f31f504f37141c8d",
+                "reference": "d0190b156bcca848d401fb80f31f504f37141c8d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "~1.5"
+            },
+            "suggest": {
+                "ext-intl": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.5.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Faker\\": "src/Faker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "François Zaninotto"
+                }
+            ],
+            "description": "Faker is a PHP library that generates fake data for you.",
+            "keywords": [
+                "data",
+                "faker",
+                "fixtures"
+            ],
+            "support": {
+                "issues": "https://github.com/fzaninotto/Faker/issues",
+                "source": "https://github.com/fzaninotto/Faker/tree/master"
+            },
+            "abandoned": true,
+            "time": "2015-05-29T06:29:14+00:00"
+        },
+        {
             "name": "illuminate/collections",
-            "version": "v12.29.0",
+            "version": "v12.30.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
@@ -565,7 +673,7 @@
         },
         {
             "name": "illuminate/conditionable",
-            "version": "v12.29.0",
+            "version": "v12.30.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/conditionable.git",
@@ -611,7 +719,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v12.29.0",
+            "version": "v12.30.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -659,7 +767,7 @@
         },
         {
             "name": "illuminate/macroable",
-            "version": "v12.29.0",
+            "version": "v12.30.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -705,16 +813,16 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v12.29.0",
+            "version": "v12.30.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "de70e16ed9bcaa52aa2ff65732d8c8cac21b67be"
+                "reference": "67f865ab8a40444534e5aa9f725d25897164a7d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/de70e16ed9bcaa52aa2ff65732d8c8cac21b67be",
-                "reference": "de70e16ed9bcaa52aa2ff65732d8c8cac21b67be",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/67f865ab8a40444534e5aa9f725d25897164a7d4",
+                "reference": "67f865ab8a40444534e5aa9f725d25897164a7d4",
                 "shasum": ""
             },
             "require": {
@@ -780,7 +888,56 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2025-09-12T14:36:19+00:00"
+            "time": "2025-09-18T15:09:27+00:00"
+        },
+        {
+            "name": "jasongrimes/paginator",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jasongrimes/php-paginator.git",
+                "reference": "3411e3cd0c6479a0b514f26e4358f0273552f221"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jasongrimes/php-paginator/zipball/3411e3cd0c6479a0b514f26e4358f0273552f221",
+                "reference": "3411e3cd0c6479a0b514f26e4358f0273552f221",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "JasonGrimes": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jason Grimes",
+                    "email": "jason@grimesit.com"
+                }
+            ],
+            "description": "A lightweight PHP paginator, for generating pagination controls in the style of Stack Overflow and Flickr. The 'first' and 'last' page links are shown inline as page numbers, and excess page numbers are replaced by ellipses.",
+            "homepage": "http://github.com/jasongrimes/php-paginator",
+            "keywords": [
+                "pager",
+                "pagination",
+                "paginator"
+            ],
+            "support": {
+                "issues": "https://github.com/jasongrimes/php-paginator/issues",
+                "source": "https://github.com/jasongrimes/php-paginator/tree/master"
+            },
+            "time": "2018-07-11T18:11:49+00:00"
         },
         {
             "name": "league/plates",

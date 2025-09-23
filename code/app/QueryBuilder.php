@@ -111,4 +111,15 @@ class QueryBuilder
 
         return false;
     }
+
+    // Метод позволяет получить определённый массив данных из БД. Таблицы передаётся через параметре $table. Лимит получаемых данных передаётся через параметр $limit (кол-во получаемых данных в результате ответа). Отступ/шаг выборки (offset) задаётся в через параметр $page, который принимает значение из GET параметра переданного в запросе.
+    public function limitOffsetPaginationData($table, int $limit, string $aliasPage) {
+        $select = $this->queryFactory->newSelect();
+        $select->cols(["*"])->from($table)->setPaging($limit)->page($_GET[$aliasPage] ?? 1);
+        $stmt = $this->pdo->prepare($select->getStatement());
+        $stmt->execute();
+
+        $this->result = $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $this;
+    }
 }

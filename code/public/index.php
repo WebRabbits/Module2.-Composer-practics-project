@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Доделать вывод информации в шаблоне в зависимости от авторизованности пользователя - выводить соответствующие пункты меню в зависимости от авторизации юзера
- * Сделать LogOut √
- * Просмотреть видео User 3
- */
-
 if (!session_id()) {
     session_start();
 }
@@ -17,6 +11,11 @@ $templates = new League\Plates\Engine("../app/views");
 
 use Illuminate\Support\Arr;
 
+use App\QueryBuilder;
+use Connection\Connection;
+use AUra\SqlQuery\QueryFactory;
+require_once(__DIR__ . "/../config/GlobalsConfig.php");
+
 use function Tamtamchik\SimpleFlash\flash;
 
 
@@ -24,7 +23,7 @@ use function Tamtamchik\SimpleFlash\flash;
 $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/home', ["App\controllers\HomeController", "index"]); // Название контроллера, названеи метода
     $r->addRoute('GET', '/about/{amount:\d+}', ["App\controllers\HomeController", "about"]);
-    $r->addRoute("GET", "/posts", ["App\controllers\PostsController", "getAllPosts"]);
+    $r->addRoute("GET", "/posts", ["App\controllers\PostsController", "getPostsPagination"]);
     $r->addRoute("GET", "/registration", ["App\controllers\AuthController", "showPageRegistration"]);
     $r->addRoute("POST", "/registration", ["App\controllers\AuthController", "registration"]);
     $r->addRoute("GET", "/verification", ["App\controllers\AuthController", "emailVerification"]);
@@ -32,6 +31,7 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
     $r->addRoute("POST", "/auth", ["App\controllers\AuthController", "login"]);
     $r->addRoute("GET", "/logout", ["App\controllers\AuthController", "logout"]);
     $r->addRoute("POST", "/home", ["App\controllers\HomeController", "changePassword"]);
+    $r->addRoute("POST", "/posts", ["App\controllers\PostsController", "addPostsToFaker"]);
 });
 
 // Fetch method and URI from somewhere
@@ -67,27 +67,21 @@ switch ($routeInfo[0]) {
 }
 
 
+$db = new QueryBuilder(Connection::Connect());
+// var_dump($db->limitOffsetPaginationData("posts", 3, "page")->result());
 
 
 
+//// Отправка письма на почту при помощи внешнего компонента/библиотеки https://packagist.org/packages/eoghanobrien/php-simple-mail
+// Для успешной отправки эл.письма - требуется настроить SMTP-сервер.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// var_dump(SimpleMail::make()
+// ->setTo("grig5230@gmail.com", "Roman Test")
+// ->setFrom("info@example.com", "Info Example Admin")
+// ->setSubject("Тема ждля проверик отправки письма")
+// ->setMessage("Тело с текстом данного письма для отправки сообщения")
+// ->send()
+// );
 
 
 //// Exceptions - Исключения (обработка ошибок)

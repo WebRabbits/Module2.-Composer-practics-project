@@ -24,6 +24,7 @@ return array(
     'Illuminate\\Support\\' => array($vendorDir . '/illuminate/support', $vendorDir . '/illuminate/collections', $vendorDir . '/illuminate/macroable', $vendorDir . '/illuminate/conditionable'),
     'Illuminate\\Contracts\\' => array($vendorDir . '/illuminate/contracts'),
     'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
+    'Faker\\' => array($vendorDir . '/fzaninotto/faker/src/Faker'),
     'Doctrine\\Inflector\\' => array($vendorDir . '/doctrine/inflector/src'),
     'Delight\\Otp\\' => array($vendorDir . '/delight-im/otp/src'),
     'Delight\\Http\\' => array($vendorDir . '/delight-im/http/src'),
