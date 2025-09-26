@@ -7,13 +7,13 @@ use Exception;
 class Config {
     public static function getDataConfig($path = null) {
         if($path) {
-            $config = $GLOBALS["config"];
+            $config = &$GLOBALS["config"];
 
             $path = explode(".", $path);
 
             foreach($path as $key) {
                 if(isset($config[$key])) {
-                    $config = $config[$key];
+                    $config = &$config[$key];
                 }
             }
             try {
@@ -26,6 +26,23 @@ class Config {
             }
         }
         return false;
+    }
+
+    public static function setDataConfig($path = null, $assignedValue = "") {
+        if($path) {
+            $config = &$GLOBALS["config"];
+
+            $path = explode(".", $path);
+
+            foreach($path as $key) {
+                if(isset($config[$key])) {
+                    $config = &$config[$key];
+                }
+            }
+            
+            $config = $assignedValue;
+            return $config;
+        }
     }
 }
 

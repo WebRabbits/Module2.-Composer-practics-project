@@ -13,10 +13,10 @@ class QueryBuilder
     private $lastInsertId = null;
     private $result;
 
-    public function __construct($connect)
+    public function __construct(PDO $pdo, QueryFactory $queryFactory)
     {
-        $this->pdo = $connect;
-        $this->queryFactory = new QueryFactory("mysql");
+        $this->pdo = $pdo;
+        $this->queryFactory = $queryFactory;
     }
 
     public function getAll($table)

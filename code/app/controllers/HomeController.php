@@ -4,28 +4,26 @@ namespace App\controllers;
 
 use App\exceptions\AccountIsBlockedException;
 use App\exceptions\NotEnoughtMoneyException;
-use Connection\Connection;
 use League\Plates\Engine;
 use function Tamtamchik\SimpleFlash\flash;
 use Delight\Auth\Auth;
 use Delight\Auth\Role;
 
-require_once(__DIR__ . "/../../config/GlobalsConfig.php");
-
 class HomeController
 {
-    private $db = null;
     private $auth = null;
     private $template = null;
 
-    public function __construct()
+    public function __construct(Engine $engine, Auth $auth)
     {
-        $this->db = Connection::Connect();
-        $this->auth = new Auth($this->db, null, null, false);
-        $this->template = new Engine("../app/views");
+        $this->template = $engine;
+        $this->auth = $auth;
     }
-    public function index($vars)
-    {
+    public function index()
+    {   
+        // d(112233);
+        // die;
+
         $this->template->addData(["isLoggedIn" => $this->auth->isLoggedIn()], "homepage");
         if ($this->auth->isLoggedIn()) {
             echo $this->template->render("homepage", $this->renderDataHomepage());

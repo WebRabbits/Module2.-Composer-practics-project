@@ -13,7 +13,7 @@ $GLOBALS["config"] = [
         ]
     ],
     "verificationData" => [
-        "selector" => "sfo_DMGqyKDoCj_x",
-        "token" => "1CpuoTTcIsWuYI2n"
+        "selector" => "",
+        "token" => ""
     ]
 ];

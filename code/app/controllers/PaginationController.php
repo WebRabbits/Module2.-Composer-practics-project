@@ -9,9 +9,9 @@ class PaginationController
 {
     public static function pagination(
         $totalItems,
-        $itemsPerPage = 3,
+        $itemsPerPage = 10,
         $urlPattern = "?page=(:num)"
-        ) {
+    ) {
 
         $currentPage = $_GET["page"] ?? 1;
 

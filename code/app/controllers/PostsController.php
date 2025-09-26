@@ -4,11 +4,8 @@ namespace App\controllers;
 
 use App\QueryBuilder;
 use App\controllers\PaginationController;
-use Connection\Connection;
 use League\Plates\Engine;
 use Faker\Factory;
-
-require(__DIR__ . "/../../config/GlobalsConfig.php");
 
 
 class PostsController
@@ -17,10 +14,10 @@ class PostsController
     private $templates = null;
     private $faker = null;
 
-    public function __construct()
+    public function __construct(QueryBuilder $queryBuilder, Engine $engine)
     {
-        $this->db = new QueryBuilder(Connection::Connect());
-        $this->templates = new Engine("../app/views");
+        $this->db = $queryBuilder;
+        $this->templates = $engine;
         $this->faker = Factory::create();
     }
     public function getAllPosts()
@@ -31,7 +28,7 @@ class PostsController
     }
 
     public function getPostsPagination() {
-        $posts = $this->db->limitOffsetPaginationData("posts", 3, "page")->result();
+        $posts = $this->db->limitOffsetPaginationData("posts", 10, "page")->result();
         $pagination = PaginationController::pagination(count($this->getAllPosts()));
         echo $this->templates->render("posts", ["postsInView" => $posts, "pagination" => $pagination]);
         

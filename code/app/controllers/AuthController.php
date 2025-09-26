@@ -2,8 +2,6 @@
 
 namespace App\controllers;
 
-use App\QueryBuilder;
-use Connection\Connection;
 use Config\Config;
 use League\Plates\Engine;
 use function Tamtamchik\SimpleFlash\flash;
@@ -18,11 +16,10 @@ class AuthController
     private $template = null;
     private $anException = true;
 
-    public function __construct()
+    public function __construct(Engine $engine, Auth $auth)
     {
-        $this->db = Connection::Connect();
-        $this->auth = new Auth($this->db, null, null, false);
-        $this->template = new Engine("../app/views");
+        $this->template = $engine;
+        $this->auth = $auth;
     }
 
     public function showPageRegistration()
@@ -30,7 +27,7 @@ class AuthController
         echo $this->template->render("registration", ["anException" => $this->getExceptionFlag()]);
     }
 
-    public function registration($vars)
+    public function registration()
     {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $email = trim(filter_var($_POST["email"], FILTER_SANITIZE_EMAIL)) ?? "";
@@ -40,7 +37,10 @@ class AuthController
 
         try {
             $userId = $this->auth->register($email, $password, $username, function ($selector, $token) {
-                flash()->info("'Send ' . $selector . ' and ' . $token . ' to the user (e.g. via email)<br>For emails, consider using the mail(...) function, Symfony Mailer, Swiftmailer, PHPMailer, etc.<br>For SMS, consider using a third-party service and a compatible SDK");
+                Config::setDataConfig("verificationData.selector", $selector);
+                Config::setDataConfig("verificationData.token", $token);
+            
+                flash()->info("Verification user after registration - <a href='https://composer-practics.ru/verification?selector=".urlencode($selector)."&token=".urlencode($token)."'>Click here</a>");
             });
 
             $this->setExceptionFlag(false);
@@ -60,10 +60,14 @@ class AuthController
 
     public function emailVerification()
     {
+        $selector = $_GET["selector"] ?? "";
+        $token = $_GET["token"] ?? "";
+        d($_GET);
         try {
-            $this->auth->confirmEmail(Config::getDataConfig("verificationData.selector"), Config::getDataConfig("verificationData.token"));
+            $this->auth->confirmEmail($selector, $token);
 
-            echo 'Email address has been verified';
+            $this->setExceptionFlag(false);
+            flash()->success("Email address has been verified");
         } catch (\Delight\Auth\InvalidSelectorTokenPairException $e) {
             die('Invalid token');
         } catch (\Delight\Auth\TokenExpiredException $e) {
@@ -73,6 +77,8 @@ class AuthController
         } catch (\Delight\Auth\TooManyRequestsException $e) {
             die('Too many requests');
         }
+
+        echo $this->template->render("verification", ["anException" => $this->getExceptionFlag()]);
     }
 
     public function showPageLogin()

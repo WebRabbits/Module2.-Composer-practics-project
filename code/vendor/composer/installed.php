@@ -3,7 +3,7 @@
         'name' => '__root__',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'ab8a54ae0f1cb4dc5fcb29f6973116a72c989773',
+        'reference' => 'baa6f565cab0e2c99cf827b0f04baafc8e1e065f',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         '__root__' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'ab8a54ae0f1cb4dc5fcb29f6973116a72c989773',
+            'reference' => 'baa6f565cab0e2c99cf827b0f04baafc8e1e065f',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -181,6 +181,15 @@
             'aliases' => array(),
             'dev_requirement' => true,
         ),
+        'laravel/serializable-closure' => array(
+            'pretty_version' => 'v2.0.5',
+            'version' => '2.0.5.0',
+            'reference' => '3832547db6e0e2f8bb03d4093857b378c66eceed',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../laravel/serializable-closure',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'league/plates' => array(
             'pretty_version' => 'v3.6.0',
             'version' => '3.6.0.0',
@@ -217,6 +226,24 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'php-di/invoker' => array(
+            'pretty_version' => '2.3.7',
+            'version' => '2.3.7.0',
+            'reference' => '3c1ddfdef181431fbc4be83378f6d036d59e81e1',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../php-di/invoker',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'php-di/php-di' => array(
+            'pretty_version' => '7.1.1',
+            'version' => '7.1.1.0',
+            'reference' => 'f88054cc052e40dbe7b383c8817c19442d480352',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../php-di/php-di',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'psr/clock' => array(
             'pretty_version' => '1.0.0',
             'version' => '1.0.0.0',
@@ -240,6 +267,12 @@
             'install_path' => __DIR__ . '/../psr/container',
             'aliases' => array(),
             'dev_requirement' => false,
+        ),
+        'psr/container-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '^1.0',
+            ),
         ),
         'psr/simple-cache' => array(
             'pretty_version' => '3.0.0',

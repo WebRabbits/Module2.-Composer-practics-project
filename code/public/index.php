@@ -13,10 +13,17 @@ use Illuminate\Support\Arr;
 
 use App\QueryBuilder;
 use Connection\Connection;
-use AUra\SqlQuery\QueryFactory;
-require_once(__DIR__ . "/../config/GlobalsConfig.php");
+use Aura\SqlQuery\QueryFactory;
+use Config\Config;
 
 use function Tamtamchik\SimpleFlash\flash;
+// use DI\ContainerBuilder;
+require_once(__DIR__ . "/../config/GlobalsConfig.php");
+require_once(__DIR__ . "/../app/containerBuilder/containerBuilder.php");
+
+// $containerBuilder = new ContainerBuilder();
+// $container = $containerBuilder->build();
+
 
 
 
@@ -59,15 +66,35 @@ switch ($routeInfo[0]) {
         $handler = $routeInfo[1];
         $vars = $routeInfo[2];
 
-        $controller = new $handler[0];
+        $container->call($routeInfo[1], $routeInfo[2]);
 
-        call_user_func([$controller, $handler[1]], $vars);
+        // $controller = new $handler[0];
+
+        // call_user_func([$controller, $handler[1]], $vars);
 
         break;
 }
 
 
-$db = new QueryBuilder(Connection::Connect());
+
+
+
+
+// d(Config::setDataConfig("verificationData.selector", "test22334455"));
+// var_dump($GLOBALS["config"]);
+// $GLOBALS["config"]["verificationData"]["selector"] = "test22334455";
+
+
+
+
+
+
+
+
+
+
+
+// $db = new QueryBuilder(Connection::Connect());
 // var_dump($db->limitOffsetPaginationData("posts", 3, "page")->result());
 
 
@@ -78,7 +105,7 @@ $db = new QueryBuilder(Connection::Connect());
 // var_dump(SimpleMail::make()
 // ->setTo("grig5230@gmail.com", "Roman Test")
 // ->setFrom("info@example.com", "Info Example Admin")
-// ->setSubject("Тема ждля проверик отправки письма")
+// ->setSubject("Тема для проверки отправки письма")
 // ->setMessage("Тело с текстом данного письма для отправки сообщения")
 // ->send()
 // );
